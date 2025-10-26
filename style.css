@@ -1,0 +1,573 @@
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&family=Share+Tech+Mono&display=swap");
+#burger {
+  position: absolute;
+  width: 100%;
+  right: 0;
+  top: 0;
+  font-size: 20px;
+  display: none;
+}
+
+#open,
+#close {
+  font-size: 60px;
+  right: 20px;
+  text-decoration: none;
+  color: #3cfb8a;
+  z-index: 2;
+  position: absolute;
+}
+
+/* NAV MOBILE */
+.burger-nav {
+  top: 60px; /* sous le header */
+  width: 100%;
+  background: #0B1D2E;
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform: translateY(-300px);
+  opacity: 0;
+  pointer-events: none;
+  border-top: 2px solid #40e07a;
+  border-bottom: 2px solid #40e07a;
+}
+
+.burger-nav a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #3cfb8a;
+}
+
+.burger-nav a:hover {
+  color: #ff964f;
+  text-decoration: underline !important;
+  text-underline-offset: 6px;
+}
+
+/* Quand menu ouvert */
+#burger:target .burger-nav {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* On affiche/masque les boutons */
+#burger:target #open {
+  display: none;
+}
+
+#burger:not(:target) #close {
+  display: none;
+}
+
+/* NAV DESKTOP */
+.desktop-nav {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1rem;
+  align-items: center;
+  margin-top: 10px;
+}
+.desktop-nav a {
+  text-decoration: none;
+  color: white;
+  margin-right: 20px;
+}
+.desktop-nav a:hover {
+  color: #ff964f;
+  text-decoration: underline !important;
+  text-underline-offset: 6px;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 1000px) {
+  #burger {
+    display: block;
+  }
+  .desktop-nav {
+    display: none;
+  }
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Share Tech Mono", monospace;
+  color: #f9eeee;
+  letter-spacing: 3px;
+  scroll-behavior: smooth;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+body {
+  width: 100%;
+  background: radial-gradient(circle at 30% 30%, #4fd6a1 0%, #3a9cc0 25%, #4e53d4 60%, #1f2b9b 85%, #0f2763 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  overflow-x: hidden;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.05), transparent 70%);
+  pointer-events: none;
+}
+body h1, body h2, body h3, body h4 {
+  font-family: "Russo One", sans-serif;
+  text-transform: uppercase;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+body .scroll-haut {
+  text-decoration: none;
+  font-weight: 600;
+  z-index: 6;
+  padding-left: 0.1em;
+  padding-bottom: 0.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  font-size: 30px;
+  background-color: #0b1d2e;
+  color: #3cfb8a !important;
+  width: 50px;
+  height: 50px;
+  border-radius: 1rem;
+  text-align: center;
+  border: 3px solid #40e07a;
+  animation: fade;
+  animation-timeline: scroll(y);
+  animation-range: 0 10%;
+}
+body header {
+  background-color: #0b1d2e;
+  color: #3cfb8a;
+  text-align: center;
+  padding: 20px;
+  border-top: 2px solid #40e07a;
+  border-bottom: 2px solid #40e07a;
+}
+body header .header-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+body header .header-top .logo {
+  height: 6em;
+  width: 6em;
+  background: url(./images/pixelMe.png) no-repeat center/cover;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+body header .header-top h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+body header .header-top h2 {
+  font-size: 1.5rem;
+}
+body .welcome {
+  position: absolute;
+  z-index: 1000;
+  min-height: 100%;
+  width: 100%;
+  margin: auto;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: rgba(15, 39, 66, 0.8);
+  text-align: center;
+}
+body .welcome .picOfMe {
+  height: 200px;
+  width: 300px;
+  border-radius: 1rem;
+  transition: opacity 0.1s ease-in;
+  opacity: 1;
+}
+body .welcome .picOfMe.fade-out {
+  opacity: 0;
+}
+body .welcome button {
+  padding: 1rem;
+  width: 100px;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.4235294118);
+  cursor: pointer;
+  text-align: center;
+}
+body .welcome .yes {
+  background-color: rgb(25, 174, 25);
+}
+body .welcome .no {
+  background-color: rgb(219, 36, 36);
+}
+body .welcome .ok {
+  display: none;
+  background-color: rgb(25, 174, 25);
+  width: 120px;
+}
+body section {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+body section .subtitle {
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.4235294118);
+  background-color: #0B1D2E;
+  border: 2px solid #40e07a;
+}
+body .aboutTitle {
+  width: 250px;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.4235294118);
+  background-color: #0B1D2E;
+  border: 2px solid #40e07a;
+  text-align: center;
+  margin: auto;
+  margin-top: 1rem;
+}
+body .aboutTitle h2 {
+  color: #f9eeee;
+}
+body #aboutMe .cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1em;
+  background-color: #40e07a;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+body #aboutMe .card {
+  height: 200px;
+  width: 90%;
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  background: rgba(11, 29, 46, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 1rem;
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.4235294118);
+}
+body #aboutMe .card .pic-container {
+  width: 45%;
+}
+body #aboutMe .card .pic-container .picCard {
+  background-image: center/cover;
+  width: 9rem;
+  height: 9rem;
+}
+body #aboutMe .card .aboutText {
+  width: 45%;
+}
+body #aboutMe .card .aboutText p {
+  color: #3cfb8a;
+  margin-top: 0.5rem;
+  margin: auto;
+}
+body #aboutMe .why p {
+  text-align: center;
+  line-height: 2;
+}
+body #exp nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 2rem;
+}
+body #exp nav a {
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+body #exp nav a:hover {
+  color: #ff964f;
+  text-decoration: underline !important;
+  text-underline-offset: 6px;
+}
+body #exp nav a.active {
+  color: #ff964f;
+}
+body #exp .exp {
+  text-align: center;
+  line-height: 2;
+  width: 90%;
+}
+body #exp .exp .date {
+  font-style: italic;
+}
+body #exp .exp h4 {
+  font-size: 1rem;
+}
+body #exp .exp .exp-item {
+  margin: 2rem 0;
+}
+body #exp .study {
+  display: none;
+  text-align: center;
+  width: 90%;
+}
+body #exp .icon {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+body #exp ul {
+  list-style: none;
+}
+body #exp ul li {
+  margin: 1rem 0;
+  line-height: 2;
+}
+body #skill nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 3rem;
+}
+body #skill nav a {
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+body #skill nav a:hover {
+  color: #ff964f;
+  text-decoration: underline !important;
+  text-underline-offset: 6px;
+}
+body #skill nav a.active {
+  color: #ff964f;
+}
+body #skill ul {
+  list-style: none;
+}
+body #skill ul li {
+  margin: 1rem 0;
+  line-height: 2;
+}
+body #skill .icon {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+body #skill .front,
+body #skill .back,
+body #skill .other {
+  text-align: center;
+}
+body #contact .phone,
+body #contact .mail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body #contact .phone a,
+body #contact .mail a {
+  margin: 1.5rem 0;
+  text-decoration: none;
+  font-size: 1rem;
+}
+body footer {
+  background-color: #0b1d2e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 2px solid #40e07a;
+  border-bottom: 2px solid #40e07a;
+}
+body footer .social {
+  display: flex;
+  flex-direction: row;
+}
+body footer a img {
+  height: 8rem;
+  width: 8rem;
+}
+body footer .mail {
+  margin: 1rem 0;
+}
+body footer p {
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+}
+
+@media screen and (min-width: 600px) {
+  body #aboutMe {
+    width: 90%;
+    margin: auto;
+    margin-top: 2rem;
+  }
+  body #aboutMe .card {
+    height: 100%;
+    width: 70%;
+    padding: 1rem;
+  }
+}
+@media screen and (min-width: 800px) {
+  body header .logo {
+    width: 15rem;
+    height: 15rem;
+  }
+  body .welcome .picOfMe {
+    height: 20rem;
+    width: 25rem;
+  }
+  body h2 {
+    font-size: 2.5rem;
+  }
+  body h3,
+  body section a {
+    font-size: 2rem;
+  }
+  body p,
+  body li,
+  body a,
+  body .yes,
+  body .no,
+  body .ok {
+    font-size: 1.5rem;
+  }
+  body button {
+    width: 300px;
+  }
+  body .ok {
+    width: 400px !important;
+    padding: 2rem;
+  }
+  body #exp nav a,
+  body #skill nav a {
+    font-size: 2rem;
+  }
+  body #exp .icon,
+  body #skill .icon {
+    height: 60px;
+    width: 60px;
+  }
+  body #exp .exp-item h4 {
+    font-size: 1.5rem;
+  }
+  body .aboutTitle {
+    width: 400px;
+  }
+  body #aboutMe .card {
+    height: 100%;
+    width: 50%;
+    padding: 1rem;
+  }
+  body #contact .phone a,
+  body #contact .mail a {
+    font-size: 2rem;
+  }
+  body footer p {
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  body #aboutMe .card {
+    height: 100%;
+    width: 40%;
+    padding: 1rem;
+  }
+  body #aboutMe .card .pic-container {
+    height: 12rem;
+    width: 12rem;
+  }
+  body #aboutMe .card .pic-container .picCard {
+    height: 100%;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1400px) {
+  body h2 {
+    font-size: 2.5rem;
+  }
+  body h3,
+  body section a {
+    font-size: 2rem;
+  }
+  body p,
+  body li,
+  body a,
+  body .yes,
+  body .no,
+  body .ok {
+    font-size: 1.5rem;
+  }
+  body button {
+    width: 300px;
+  }
+  body .ok {
+    width: 400px !important;
+    padding: 2rem;
+  }
+  body #exp nav a,
+  body #skill nav a {
+    font-size: 2rem;
+  }
+  body #exp .icon,
+  body #skill .icon {
+    height: 60px;
+    width: 60px;
+  }
+  body #aboutMe .card {
+    height: 100%;
+    width: 40%;
+    padding: 1rem;
+  }
+  body #contact .phone a,
+  body #contact .mail a {
+    font-size: 2rem;
+  }
+  body footer p {
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 1600px) {
+  body #aboutMe .card {
+    height: 100%;
+    width: 30%;
+    padding: 1rem;
+  }
+  body #aboutMe .card .picCard {
+    height: 10rem;
+    width: 10rem;
+  }
+}/*# sourceMappingURL=style.css.map */

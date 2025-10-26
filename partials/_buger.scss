@@ -1,0 +1,98 @@
+ #burger {
+    position: absolute;
+    width: 100%;
+    right: 0;
+    top: 0;
+    font-size: 20px;
+    display: none; // caché sur desktop
+  }
+
+  #open,
+  #close {
+    font-size: 60px;
+    right: 20px;
+    text-decoration: none;
+    color: #3cfb8a;
+    z-index: 2;
+    position: absolute;
+  }
+
+  /* NAV MOBILE */
+  .burger-nav {
+
+    top: 60px; /* sous le header */
+    width: 100%;
+    background: #0B1D2E;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform: translateY(-300px);
+    opacity: 0;
+    pointer-events: none;
+    border-top: 2px solid #40e07a;
+    border-bottom: 2px solid #40e07a;
+  }
+
+  .burger-nav a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #3cfb8a;
+  }
+
+  .burger-nav a:hover{
+
+
+        color : #ff964f ; 
+        text-decoration: underline !important;
+        text-underline-offset : 6px;
+
+  }
+
+  /* Quand menu ouvert */
+  #burger:target .burger-nav {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* On affiche/masque les boutons */
+  #burger:target #open {
+    display: none;
+  }
+  #burger:not(:target) #close {
+    display: none;
+  }
+
+  /* NAV DESKTOP */
+
+  .desktop-nav {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1rem;
+    align-items: center;
+    margin-top: 10px;
+
+    a {
+      text-decoration: none;
+      color: white;
+      margin-right: 20px;
+    }
+
+    a:hover{
+        color : #ff964f ; 
+        text-decoration: underline !important;
+        text-underline-offset : 6px;
+    }
+  }
+  
+
+  /* RESPONSIVE */
+  @media screen and (max-width: 1000px) {
+    #burger {
+      display: block;
+    }
+    .desktop-nav {
+      display: none;
+    }
+  }
